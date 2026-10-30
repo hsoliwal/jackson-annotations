@@ -1,0 +1,295 @@
+Project: jackson-annotations
+
+NOTE: Annotations module is released with "simple" version like 2.20 without
+ "patch" number -- except for rare case of critical fixes.
+ This change occurred with Jackson 2.20: prior to it, patch number was included
+ but was meaningless: usually every patch version of a minor release was
+ identical.
+
+NOTE: Jackson 3.x components rely on 2.x annotations; there are no separate
+ 3.x `jackson-annotations` versions released (there were RC versions up
+ to 3.0-rc5 but not after that).
+
+------------------------------------------------------------------------
+=== Releases ===
+------------------------------------------------------------------------
+
+2.23 (not yet released)
+
+No changes since 2.22
+
+2.22 (31-May-2026)
+
+#78: Add `@JsonApplyView` to allow changing active JsonView on submodels
+ (requested by Michael I)
+ (contributed by @f-aubert)
+#339: Add `OptBoolean` valued property "order" in `@JsonIncludeProperties`
+#342: Add `@JsonTypeInfo.writeTypeIdForDefaultImpl` to allow skipping
+  writing of type id for values of default type
+#344: Improve `Locale` handling in `JsonFormat.Value`
+
+2.21 (18-Jan-2026)
+
+#314: Add `JsonInclude.Value` convenience constants
+ (contributed by @runeflobakk)
+#315: Add `@JsonDeserializeAs`
+ (suggested by @ooraini)
+#316: Make `JsonFormat.Features` java.io.Serializable
+ (requested by @tiger9800)
+#320: Add `radix` property to `@JsonFormat` annotation
+ (contributed by @tiger9800)
+#324: Add `@JsonSerializeAs`
+#326: Add `JsonTypeInfo.As.NOTHING` value
+- Fix SBOM generation, publishing
+
+2.20 (28-Aug-2025)
+
+#291: Add `optional` property for `@JacksonInject` to allow optionally injected values
+ (contributed by @giulong)
+#293: Improve duplicate Id with different associated object error message
+ (requested by @moutyque)
+#294: Drop patch number from version for 2.20 and later (no more 2.20.0)
+#296: Drop Java 6 compatibility for 2.20 (Java 8 baseline)
+- Use `Objects.equals()` for comparison (with Java 8 baseline)
+- Dropped Gradle BOM alignment configuration (as 2.20+ will be used by Jackson 3.x)
+- Generate SBOMs [JSTEP-14]
+
+2.19.2 (18-Jul-2025)
+
+Minor forwards-compatibility changes.
+
+2.19.1 (13-Jun-2025)
+
+2.19.0 (24-Apr-2025)
+
+#280: Minor change to `module-info.java`: use "open module"
+#281: [gradle-module-metadata-maven-plugin] update to version 1.0
+ (contributed by @jjohannes)
+#284: Add `OptBoolean` valued `@JsonProperty.isRequired` to
+  (eventually) replace `@JsonProperty.required`
+
+2.18.5 (27-Oct-2025)
+
+- No functional changes, but released via Sonatype Central Portal
+
+2.18.0 (26-Sep-2024)
+
+No changes since 2.17
+
+2.17.0 (12-Mar-2024)
+
+#242: Allow `@JsonAnySetter` on `ElementType.PARAMETER` (for use on
+  constructor parameters)
+
+2.16.0 (15-Nov-2023)
+
+#223: Add new `OptBoolean` valued property in `@JsonTypeInfo` to allow
+  per-type configuration of strict type id handling
+ (contributed by Joo-Hyuk K)
+#229: Add `JsonTypeInfo.Value` object (backport from 3.0)
+ (contributed by Joo-Hyuk K)
+#234: Add new `JsonTypeInfo.Id.SIMPLE_NAME`
+ (contributed by Joo-Hyuk K)
+
+2.15.0 (23-Apr-2023)
+
+#211: Add `JsonFormat.Feature`s: READ_UNKNOWN_ENUM_VALUES_AS_NULL,
+  READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE
+#214: Add NOTICE file with copyright information
+#221: Add `JsonFormat.Feature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS`
+
+2.14.0 (05-Nov-2022)
+
+#204: Allow explicit `JsonSubTypes` repeated names check
+ (contributed by Igor S)
+
+2.13.0 (30-Sep-2021)
+
+- Add `mvnw` wrapper
+
+2.12.0 (29-Nov-2020)
+
+#171: `JsonSubType.Type` should accept array of names
+ (contributed by Swayam R)
+#173: Jackson version alignment with Gradle 6
+#174: Add `@JsonIncludeProperties`
+ (contributed by Baptiste P)
+#175: Add `@JsonTypeInfo(use=DEDUCTION)`
+ (contributed by drekbour@github)
+#177: Ability to use `@JsonAnyGetter` on fields
+ (contributed by dominikrebhan@github)
+#179: Add `@JsonKey` annotation
+ (contributed by Kevin B)
+#180: Allow repeated calls to `SimpleObjectIdResolver.bindItem()` for same mapping
+#181: Add `namespace` property for `@JsonProperty` (for XML module)
+- Add target `ElementType.ANNOTATION_TYPE` for `@JsonEnumDefaultValue` (was
+  missing for some reason)
+
+2.11.0 (26-Apr-2020)
+
+- `JsonPattern.Value.pattern` retained as "", never (accidentally) exposed
+  as `null`
+
+2.10.0 (26-Sep-2019)
+
+#138: Add basic Java 9+ module info
+#141: Add `JsonFormat.Feature.ACCEPT_CASE_INSENSITIVE_PROPERTIES`
+ (suggested by Craig P)
+#159: Add `JsonFormat.Shape.BINARY`
+
+2.9.1 (07-Sep-2017)
+
+#123: Add Automatic-Module-Name (`com.fasterxml.jackson.annotation`) for JDK9 interoperability
+
+2.9.0 (30-Jul-2017)
+
+#103: Add `JsonInclude.Include.CUSTOM`, properties for specifying filter(s) to use
+#104: Add `JsonSetter.nulls`, `JsonSetter.contentNulls` for configurable null handling
+#105: Add `JsonFormat.lenient` to allow configuring lenience of date/time deserializers
+#108: Allow `@JsonValue` on fields
+#109: Add `enabled` for `@JsonAnyGetter`, `@JsonAnySetter`, to allow disabling via mix-ins
+#113: Add `@JsonMerge` to support (deep) merging of properties
+#116: Add `@JsonAlias` annotation to allow specifying alternate names for a property
+#120: Add new properties for `@JacksonInject`
+- Allow use of `@JsonView` on classes, to specify Default View to use on non-annotated
+  properties.
+
+2.8.0 (04-Jul-2016)
+
+#65: Add new choice for `JsonFormat.Shape`, `NATURAL`
+#79: Change `@JsonTypeInfo.defaultImpl` default value to deprecate `JsonTypeInfo.None.class`
+#83: Add `@JsonEnumDefaultValue` for indicating default enum choice if no real match found
+ (suggested by Alejandro R)
+#87: Add `@JsonIgnoreProperties.Value` to support merging of settings
+#89: Add `JsonFormat.Feature.ACCEPT_CASE_INSENSITIVE_PROPERTIES`
+#95: Add `JsonFormat.Feature#ADJUST_DATES_TO_CONTEXT_TIME_ZONE`
+ (suggested by Alexey B)
+
+2.7.0 (10-Jan-2016)
+
+#73: Add `@JsonClassDescription`
+ (suggested by ufoscout@github)
+#77: Add a new `ObjectIdGenerator`, `StringIdGenerator`, to allow arbitrary
+  `String` Object Id usage
+- Major rewrite of merging of `JsonFormat.Value` and `JsonInclude.Value`, to allow
+  for better multi-level defaults (global, per-type, property)
+
+2.6.0 (17-Jul-2015)
+
+#43: Add `@JsonFormat(with=Feature.xxx)` to support things like
+ `DeserializationFeature.WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED` on per-property basis.
+#56: Improve `ObjectIdGenerators.key()` to handle `null` appropriately by returning `null`
+#58: Add new properties for `@JsonIgnoreProperties`, "allowGetters", "allowSetters" 
+#60: Add new value type, `OptBoolean`, for "optional booleans", to support proper handling
+  and usage of default values, not just explicit true/false.
+#61: Add new property, `@JsonProperty.access` (and matching enum) to support read-only/write-only properties
+#64: Add `@Documented` for `@JsonPropertyDescription`
+ (suggested by Zoltan S)
+- Add `JsonInclude.Include.NON_ABSENT` value, for excluding "absent" Optional values.
+- Add tag interface `JacksonAnnotationValue` for helper types used for encapsulating information
+  for "complex" annotations (multi-property ones)
+
+2.5.0 (01-Jan-2015)
+
+#47: Add `@JsonCreator.mode` property to explicitly choose between delegating-
+ and property-based creators, or to disable specific creator (Mode.DISABLED)
+#48: Allow `@JsonView` for (method) parameters too
+#49: Add `@JsonTypeInfo.skipWritingDefault`
+#50: Add `ObjectIdGenerator.maySerializeAsObject()`,
+  `ObjectIdGenerator.ObjectIdGenerator.maySerializeAsObject()` to support JSOG
+- Added `@JsonInclude.content` to allow specifying inclusion criteria
+  for `java.util.Map` entries separate from inclusion of `Map` values
+  themselves
+- Finalize fix for [databind#490], by ensuring new mapping initialized for new context
+- Added `@JsonProperty.defaultValue()` (related to [databind#596])
+
+2.4.0 (29-May-2014)
+
+#31: Allow use of `@JsonPropertyOrder` for properties (not just classes)
+#32: Add `@JsonProperty.index`
+- Add `JsonFormat.Value#timeZoneAsString` (needed by Joda module)
+- Add `@JsonRootName.namespace` to allow specifying of namespace with
+  standard Jackson annotations (not just XML-specific ones that dataformat-xml
+  provides)
+
+2.3.0 (13-Nov-2013)
+
+#13: Add `@JsonPropertyDescription`
+ (suggested by Net-A-Porter@github)
+#20: Allow use of `@JsonFilter` for properties (via fields, methods,
+  constructor parameters)
+(note: although #15 -- Add `JsonTypeInfo.As.EXISTING` property to support new
+ variation for including Type Id was included, jackson-databind does not
+ yet support it as of 2.3.0)
+
+2.2.0 (22-Apr-2013)
+
+No changes since 2.1.1
+
+2.1.1 (11-Nov-2012)
+
+Fixes:
+
+* Make ObjectIdGenerator java.io.Serializable (needed when serializing
+  ObjectMappers/-Writers/-Readers)
+
+2.1.0 (08-Oct-2012)
+
+New features:
+
+* [Issue#4]: Add '@JsonIdentityReference', to support use case where values of
+  a specific reference property are always serialized as ids, never as full POJO
+
+Improvements:
+
+* Added '@JsonIdentityInfo.firstAsID' property, to allow forcing all references
+  to an Object to be serialized as id, including first one.
+* Fix OSGi artifact name to be fully-qualified
+
+
+2.0.2 (14-May-2012)
+
+Fixes:
+
+* OSGi bundle name was accidentally changed in 2.0.1; reverted back to one
+  used in 2.0.0, earlier
+ (reported Pascal G)
+
+2.0.1 (22-Apr-2012)
+
+Fixes:
+
+* [JACKSON-827] Fix incompatibilities with JDK 1.5 (2.0.0 accidentally
+  required 1.6)
+ (reported Pascal G)
+
+2.0.0 (25-Mar-2012)
+
+Improvements:
+
+* [JACKSON-437]: Allow injecting of type id as POJO property, by setting
+  new '@JsonTypeInfo.visible' property to true.
+* [JACKSON-669]: Allow prefix/suffix for @JsonUnwrapped properties
+  (requested by Aner P)
+* [JACKSON-787]: @JsonIgnoredProperties can be used on properties too
+
+New features:
+
+* [JACKSON-107]: Add support for Object Identity (to handled cycles, shared refs),
+  with @JsonIdentityInfo
+* [JACKSON-714] Add general-purpose '@JsonFormat' annotation
+* [JACKSON-752]: Add @JsonInclude (replacement of @JsonSerialize.include)
+* [JACKSON-754]: Add @JacksonAnnotationsInside for creating "annotation
+  bundles" (also: AnnotationIntrospector.isAnnotationBundle())
+
+Other:
+
+* Lots of miscellaneous refactoring; moving most annotations from
+  databind into this package; only leaving ones that depend on
+  databind package types
+
+------------------------------------------------------------------------
+=== History: ===
+------------------------------------------------------------------------
+
+[entries for versions 1.x and earlier not retained; refer to earlier releases)
